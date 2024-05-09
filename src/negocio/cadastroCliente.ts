@@ -1,7 +1,10 @@
 import Entrada from "../io/entrada"
 import Cliente from "../modelo/cliente"
 import CPF from "../modelo/cpf"
+import RG from "../modelo/rg"
 import Cadastro from "./cadastro"
+import CadastroRG from "./CadastroRG"
+
 
 export default class CadastroCliente extends Cadastro {
     private clientes: Array<Cliente>
@@ -24,6 +27,37 @@ export default class CadastroCliente extends Cadastro {
         let dataEmissao = new Date(ano, mes, dia)
         let cpf = new CPF(valor, dataEmissao);
         let cliente = new Cliente(nome, nomeSocial, cpf);
+
+        let rgs: Array<RG> = []
+        let escolhaRg = this.entrada.receberTexto(`Deseja registrar o RG? (s/n): `)
+        if(escolhaRg.toLocaleLowerCase() == "s") {
+            while (true) {
+                let guardadarRg = new CadastroRG(rgs)
+                guardadarRg.cadastrar()
+                break
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         this.clientes.push(cliente)
         console.log(`\nCadastro concluído :)\n`);
     }
