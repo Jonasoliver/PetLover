@@ -4,6 +4,8 @@ import CPF from "../modelo/cpf"
 import RG from "../modelo/rg"
 import Cadastro from "./cadastro"
 import CadastroRG from "./CadastroRG"
+import Telefone from "../modelo/telefone"
+import CadastroTel from "./cadastroTelefone"
 
 
 export default class CadastroCliente extends Cadastro {
@@ -41,6 +43,19 @@ export default class CadastroCliente extends Cadastro {
             }
         }
 
+        let telefones: Array<Telefone> = []
+        let telefoneOp = this.entrada.receberTexto("Deseja adicionar um número de telefone? (s/n): ")
+        if (telefoneOp.toLocaleLowerCase() === "s") {
+            while (true) {
+                let cadastrandoTelefone = new CadastroTel(telefones)
+                cadastrandoTelefone.cadastrar()
+                let opcao = this.entrada.receberTexto("deseja cadastrar mais algum telefone? (s/n): ")
+                if (opcao.toLocaleLowerCase() === "n") {
+                    break
+                }
+            }
+        }
+        
 
 
 
@@ -55,6 +70,7 @@ export default class CadastroCliente extends Cadastro {
 
         let cliente = new Cliente(nome, nomeSocial, cpf);
         cliente.setRgs = rgs
+        cliente.setTelefones = telefones
 
 
 

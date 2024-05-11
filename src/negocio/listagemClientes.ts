@@ -1,6 +1,7 @@
 import Cliente from "../modelo/cliente";
 import Listagem from "./listagem";
 import ListagemRG from "./listagemRG";
+import ListandoTelefone from "./listagemTel";
 
 export default class ListagemClientes extends Listagem {
     private clientes: Array<Cliente>
@@ -17,6 +18,10 @@ export default class ListagemClientes extends Listagem {
             console.log(`RGs:`)
             let listagemRG = new ListagemRG(cliente.getRgs)
             listagemRG.listar()
+            console.log("Telefone: ")
+            let listandoTelefone = new ListandoTelefone(cliente.getTelefones)
+            listandoTelefone.listar()
+
             console.log(`--------------------------------------`);
         });
         console.log(`\n`);

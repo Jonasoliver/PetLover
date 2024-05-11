@@ -11,7 +11,6 @@ export default class ListagemRG extends Listagem {
     public listar(): void {
         this.rgs.forEach(rg => {
             console.log("   "+"Valor: "+ rg.getValor + "  " + "Data de Emissão: "+ rg.getDataEmissao.toLocaleDateString())
-            console.log("   "+`-----------------------------------`);
         })
     }
 }
