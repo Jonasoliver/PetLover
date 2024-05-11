@@ -26,7 +26,7 @@ export default class CadastroCliente extends Cadastro {
         let dia = new Number(partesData[0].valueOf()).valueOf()
         let dataEmissao = new Date(ano, mes, dia)
         let cpf = new CPF(valor, dataEmissao);
-        let cliente = new Cliente(nome, nomeSocial, cpf);
+
 
         let rgs: Array<RG> = []
         let escolhaRg = this.entrada.receberTexto(`Deseja registrar o RG? (s/n): `)
@@ -34,7 +34,10 @@ export default class CadastroCliente extends Cadastro {
             while (true) {
                 let guardadarRg = new CadastroRG(rgs)
                 guardadarRg.cadastrar()
-                break
+                let continuar = this.entrada.receberTexto(`Deseja continuar cadastrando RG? (s/n): `)
+                if(continuar.toLocaleLowerCase() == "n") {
+                    break
+                }
             }
         }
 
@@ -50,8 +53,8 @@ export default class CadastroCliente extends Cadastro {
 
 
 
-
-
+        let cliente = new Cliente(nome, nomeSocial, cpf);
+        cliente.setRgs = rgs
 
 
 

@@ -4,6 +4,7 @@ import Produto from "./produto"
 import RG from "./rg"
 import Servico from "./servico"
 import Telefone from "./telefone"
+import CadastroRG from "../negocio/CadastroRG"
 
 export default class Cliente {
     public nome: string
@@ -46,5 +47,8 @@ export default class Cliente {
     }
     public get getPets(): Array<Pet>{
         return this.pets
+    }
+    public set setRgs(rgs: Array<RG>) {
+        this.rgs = rgs
     }
 }
